@@ -11,9 +11,3 @@ class PostForm(forms.ModelForm):
             'text': 'Текст поста',
             'group': 'Группа'
         }
-
-    def clean_text(self):
-        data = self.cleaned_data['text']
-        if data == '':
-            raise forms.ValidationError('Заполните текст поста')
-        return data

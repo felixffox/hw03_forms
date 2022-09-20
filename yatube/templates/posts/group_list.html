@@ -21,6 +21,7 @@
               </li>
             </ul>
             <p>{{ post.text }}</p>    
+            <a href="{% url 'posts:post_detail' post.pk %}">Подробная информация</a>
           </article>  
         {% if not forloop.last %}<hr>{% endif %}
       {% endfor %}
