@@ -6,7 +6,6 @@
 {% endblock %}
 
   {% block content %}
-  <body>
     <main>
       <div class="row">
         <aside class="col-12 col-md-3">
@@ -40,7 +39,7 @@
           <p>
           {{ post.text }}
           </p>
-          {% if user.is_authenticated %}
+          {% if user.is_authenticated and user == post.author %}
           <a class="btn btn-primary" href="{% url 'posts:post_edit' post.id %}">
             Редактировать запись
           </a>
@@ -48,5 +47,4 @@
         </article>
       </div> 
     </main>
-  </body>
   {% endblock %}

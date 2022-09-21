@@ -8,14 +8,11 @@ from .models import Post, Group
 
 from .utils import paginator_utils
 
-POST_PER_PAGE = 10
-
 
 def index(request):
     post_list = Post.objects.all()
     page_obj = paginator_utils(post_list, request)
     context = {
-        'post_list': post_list,
         'page_obj': page_obj,
     }
     return render(request, 'posts/index.html', context)
@@ -68,14 +65,13 @@ def post_create(request):
 @login_required
 def post_edit(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    is_edit = True
     if request.user != post.author:
         return redirect('posts:post_detail', post_id=post_id)
     form = PostForm(request.POST or None, instance=post)
     context = {
         'post': post,
         'form': form,
-        'is_edit': is_edit,
+        'is_edit': True,
     }
     if form.is_valid():
         form.save()

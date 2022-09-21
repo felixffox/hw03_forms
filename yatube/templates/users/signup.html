@@ -9,11 +9,11 @@
         </div>
         <div class="card-body">
         {% load user_filters %}
-        {% include 'posts/includes/form_errors.html' %}
+        {% include 'includes/form_errors.html' %}
 
             <form method="post" action="{% url 'users:signup' %}">
               {% csrf_token %}
-              {% include 'posts/includes/form_fields.html' %}
+              {% include 'includes/form_fields.html' %}
               <div class="col-md-6 offset-md-4">
                 <button type="submit" class="btn btn-primary">
                   Зарегистрироваться
